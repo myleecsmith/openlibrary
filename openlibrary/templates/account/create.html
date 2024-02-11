@@ -50,6 +50,14 @@ $else:
         $:field(form.password)
         $:field(form.password2)
 
+        <!--show_password checkbox created to toggle password type-->
+        <div class="formElement">
+            <div class="input">
+                <input name="show_password" type="checkbox" id="show_password" />
+                <label for="show_password" class="small">$_('Show Password')</label>
+            </div>
+        </div>
+
         <br/>
         <label>
             $:form.ia_newsletter.render() $:form.ia_newsletter.description
@@ -58,6 +66,7 @@ $else:
         <hr/>
 
         <small>$:_("By signing up, you agree to the Internet Archive's <a href='//archive.org/about/terms.php' target='_blank'>Terms of Service</a>.")</small>
+
 
         <div class="formElement bottom">
             <br/>
@@ -71,5 +80,21 @@ $else:
             <a href="javascript:history.go(-1);" class="smaller attn">$_("Cancel")</a>
         </div>
     </form>
+
+    <!--toggle password type depening on if show_password checked or not-->
+    <script>
+        document.getElementById('show_password').addEventListener('change', function () {
+            var passwordInput = document.getElementById('password');
+            var passwordInput2 = document.getElementById('password2');
+
+            if (this.checked) {
+                passwordInput.type = 'text';
+                passwordInput2.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+                passwordInput2.type = 'password';
+            }
+        });
+    </script>
 
 </div>
