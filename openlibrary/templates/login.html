@@ -61,6 +61,14 @@ $var title: $("Log In")
             </div>
         </div>
 
+        <!--show_password checkbox created to toggle password type-->
+        <div class="formElement">
+            <div class="input">
+                <input name="show_password" type="checkbox" id="show_password" />
+                <label for="show_password" class="small">$_('Show Password')</label>
+            </div>
+        </div>
+
         <input type="hidden" id="redirect" value="$form.redirect.value" name="redirect" />
         <input type="hidden" id="debug_token" value="" name="debug_token"/>
 
@@ -77,4 +85,18 @@ $var title: $("Log In")
             $:_('Not a member of Open Library? <a href="/account/create">Sign up now</a>.')</div>
         </div>
     </form>
+
+    <!--toggle password type depening on if show_password checked or not-->
+    <script>
+        document.getElementById('show_password').addEventListener('change', function () {
+            var passwordInput = document.getElementById('password');
+
+            if (this.checked) {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        });
+    </script>
+
 </div>
